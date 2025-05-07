@@ -1,0 +1,37 @@
+@import "tailwindcss";
+body {
+    font-family: "Montserrat", serif !important;
+    background-color: #e0e8e0;
+}
+@media (min-width: 850px) {
+    .mqmin850 {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 850px) {
+    .mqmax850 {
+      display: block;
+    }
+  }
+
+  @keyframes slide-in-left {
+    0% {
+      transform: translateX(-200px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Configuration Swiper personnalisée */
+.swiper-init .swiper-pagination-bullet {
+  @apply w-3 h-3 bg-gray-300 opacity-100;
+}
+
+.swiper-init .swiper-pagination-bullet-active {
+  @apply bg-green-500;
+}
+  
