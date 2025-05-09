@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-import  Team  from "../components/team";
+import Team from "../components/team";
 import { FadeCarousel } from "../components/fadecarousel";
 import { Contact } from "../components/contact";
 import { Link } from "react-router-dom";
@@ -11,7 +11,8 @@ export const About = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen ">
+      <div className="min-h-screen">
+        {/* Section À propos */}
         <section className="min-h-screen text-[#1a1a1a] px-6 pb-4 flex flex-col items-center justify-center text-center">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -32,9 +33,7 @@ export const About = () => {
               <span className="text-[#1a1a1a]">infrastructures délabrées</span>,{" "}
               <span className="text-[#1a1a1a]">manque de fournitures</span>, ou
               encore{" "}
-              <span className="text-[#1a1a1a]">
-                accès limité à l’eau potable
-              </span>
+              <span className="text-[#1a1a1a]">accès limité à l’eau potable</span>
               . Notre objectif est de{" "}
               <span className="text-[#1a1a1a] font-bold">
                 mettre en lumière ces réalités
@@ -47,9 +46,7 @@ export const About = () => {
               Grâce à une carte interactive intuitive, chaque utilisateur peut
               localiser les écoles en besoin, consulter les détails de leurs
               défis et{" "}
-              <span className="text-[#1a1a1a] font-bold">
-                agir concrètement
-              </span>{" "}
+              <span className="text-[#1a1a1a] font-bold">agir concrètement</span>{" "}
               via des dons, des partenariats ou du bénévolat.
             </p>
 
@@ -62,19 +59,29 @@ export const About = () => {
             </div>
           </div>
         </section>
-        <section className=" text-[#1a1a1a] px-6 flex flex-col items-center justify-center">
+
+        {/* Section Équipe */}
+        <section className="text-[#1a1a1a] px-6 flex flex-col items-center justify-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-8 text-green-800 text-center">
-            Equipe
+            Équipe
           </h1>
-          <Team />
+          <div className="w-full max-w-6xl">
+            <Team />
+          </div>
         </section>
-        <section className=" text-[#1a1a1a] px-6 flex flex-col items-center justify-center text-center">
+
+        {/* Section Partenaires */}
+        <section className="text-[#1a1a1a] px-6 flex flex-col items-center justify-center text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-8 mt-6 text-green-800">
             Nos Partenaires
           </h1>
-          <FadeCarousel />
+          <div className="w-full max-w-6xl">
+            <FadeCarousel />
+          </div>
         </section>
-        <section className="pb-15">
+
+        {/* Section Contact */}
+        <section className="pb-25 px-6">
           <Contact />
         </section>
       </div>

@@ -9,7 +9,7 @@ const testimonials = [
   {
     name: 'Abigaïl AGBENOMBA',
     title: 'Développeuse Web & Cartographe',
-    image: './../../public/abi.JPG',
+    image: './../../public/User-avatar.svg.png',
   },
   {
     name: 'Saliou ABDOU ',

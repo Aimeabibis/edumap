@@ -9,14 +9,20 @@ export const Contact = () => {
           Contactez-nous
         </h2>
 
-        <div className="flex flex-col md:flex-row gap-10 items-start justify-center">
+        <div className="flex flex-col md:flex-row gap-20 items-start justify-center">
           {/* Infos de contact */}
-          <div className="md:w-1/2 text-white space-y-4">
+          <div className="md:w-1/2 text-white space-y-4 md:order-last">
             <h3 className="text-2xl font-semibold">Nos coordonnées</h3>
 
-            <p><strong>Téléphone :</strong> +229 91 23 45 67</p>
-            <p><strong>Email :</strong> projetedumap@gmail.com</p>
-            <p><strong>Adresse :</strong> Abomey-Calavi, Bénin</p>
+            <p>
+              <strong>Téléphone :</strong> +229 91 23 45 67
+            </p>
+            <p>
+              <strong>Email :</strong> projetedumap@gmail.com
+            </p>
+            <p>
+              <strong>Adresse :</strong> Abomey-Calavi, Bénin
+            </p>
             <div className="mt-6">
               <p className="mb-2 font-semibold">Suivez-nous :</p>
               <div className="flex space-x-4">
@@ -36,7 +42,9 @@ export const Contact = () => {
           {/* Formulaire */}
           <form className="md:w-1/2 w-full bg-white p-6 rounded-lg shadow-md space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nom</label>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                Nom
+              </label>
               <input
                 type="text"
                 id="name"
@@ -46,7 +54,9 @@ export const Contact = () => {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
@@ -56,7 +66,9 @@ export const Contact = () => {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                Message
+              </label>
               <textarea
                 id="message"
                 rows={4}

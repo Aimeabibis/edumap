@@ -29,7 +29,7 @@ const Accueil = () => {
 
       {/* carte */}
       <div className="py-20 flex flex-col gap-10">
-        <h2 className="flex justify-center text-4xl font-bold text-green-800">
+        <h2 className="flex justify-center text-3xl md:text-4xl font-bold text-green-800">
           Carte des Ecoles en Besoin
         </h2>
         <ReactMap />
@@ -38,7 +38,7 @@ const Accueil = () => {
       {/* cards */}
 
       {/* Cards */}
-      <div className="max-w-7xl mx-auto text-white mb-10">
+      <div className="max-w-7xl mx-auto text-white mb-10 pb-20">
         {" "}
         <h2 className="text-center text-3xl md:text-4xl font-bold text-green-800 mb-12">
           Fonctionnement

@@ -1,9 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Register = () => {
+  const [fullName, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [copassword, setCoPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    try {
+      if (password !== copassword) {
+        alert("Les mots de passe ne correspondent pas !");
+        return;
+      }
+      const res = await fetch("http://localhost:5000/api/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullName, email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.message || "Erreur lors de l'inscription");
+        return;
+      }
+
+      alert("Inscription réussie !");
+      navigate("/login"); // Redirige vers la page de login
+    } catch (err) {
+      console.error("Erreur:", err);
+      alert("Erreur serveur");
+    }
+  };
+  
   return (
     <>
     <Navbar/>
@@ -13,7 +48,7 @@ export const Register = () => {
             Créer un compte
           </h2>
 
-          <form className="space-y-5">
+          <form onSubmit={handleRegister} className="space-y-5">
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Nom complet
@@ -21,6 +56,8 @@ export const Register = () => {
               <input
                 type="text"
                 id="name"
+                value={fullName}
+                onChange={(e) => setName(e.target.value)}
                 className="mt-1 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
                 required
               />
@@ -33,6 +70,8 @@ export const Register = () => {
               <input
                 type="email"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="mt-1 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
                 required
               />
@@ -45,10 +84,27 @@ export const Register = () => {
               <input
                 type="password"
                 id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="mt-1 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
                 required
               />
             </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Confirmer mot de passe
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={copassword}
+                onChange={(e) => setCoPassword(e.target.value)}
+                className="mt-1 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
+                required
+              />
+            </div>
+            
 
             <button
               type="submit"

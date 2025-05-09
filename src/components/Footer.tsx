@@ -7,9 +7,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <img
-            src="./../../public/logo_edu.png"
+            src="./../../public/logo.png"
             alt=""
-            className="h-14 bg-white rounded-full"
+            className="h-17 bg-white rounded-full"
           />
           {/* Social media */}
           <div className="flex space-x-6">

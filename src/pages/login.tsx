@@ -1,10 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Buttons from "../components/Buttons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.message || "Erreur de connexion");
+        return;
+      }
+
+      // Sauvegarde du token dans le localStorage
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      alert("Connexion réussie !");
+      navigate("/add"); // ou vers une autre route protégée
+    } catch (err) {
+      console.error(err);
+      alert("Erreur serveur");
+    }
+  };
   return (
     <>
       <Navbar />
@@ -14,7 +46,7 @@ export const Login = () => {
             Connexion
           </h2>
 
-          <form className="space-y-5">
+          <form onSubmit={handleLogin} className="space-y-5">
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Adresse Email
@@ -22,6 +54,8 @@ export const Login = () => {
               <input
                 type="email"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="mt-1 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
                 required
               />
@@ -34,6 +68,8 @@ export const Login = () => {
               <input
                 type="password"
                 id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="mt-1 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
                 required
               />
